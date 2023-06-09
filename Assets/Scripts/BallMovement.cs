@@ -11,7 +11,6 @@ public class BallMovement : MonoBehaviour
 
     [Header("Moving Variables")]
     [SerializeField] private float speed = 5f;
-    private Vector2 direction;
 
     private void Start()
     {
@@ -20,29 +19,9 @@ public class BallMovement : MonoBehaviour
         StartMoving();
     }
 
-    private void FixedUpdate()
-    {
-        Move();
-    }
-
-    private void Move()
-    {
-        rb.velocity = direction.normalized * speed;
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("I bumped");
-
-        if (collision.gameObject.CompareTag("Wall"))
-        {
-            direction.y = -direction.y;
-        }else if (collision.gameObject.CompareTag("Paddle"))
-        {
-            speed += Random.Range(0.1f, 0.3f);
-            direction.x = -direction.x;
-        }
-        else if (collision.gameObject.CompareTag("DeathRight"))
+        if (collision.gameObject.CompareTag("DeathRight"))
         {
             game.Score(1);
         }
@@ -55,6 +34,8 @@ public class BallMovement : MonoBehaviour
     private void StartMoving()
     {
         // Generate a random direction for the ball to start moving
-        direction = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
+        float x = Random.Range(0, 2) == 0 ? -1 : 1;
+        float y = Random.Range(0, 2) == 0 ? -1 : 1;
+        rb.velocity = new Vector2(speed * x, speed * y);
     }
 }

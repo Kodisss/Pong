@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
@@ -8,8 +9,14 @@ public class GameController : MonoBehaviour
 
     private GameObject currentBall;
 
-    private float scorePlayer1 = 0;
-    private float scorePlayer2 = 0;
+    [Header("Score UI")]
+    [SerializeField] private GameObject player1Text;
+    [SerializeField] private GameObject player2Text;
+
+    [SerializeField] private bool debug;
+
+    private float player1Score = 0;
+    private float player2Score = 0;
 
     // Start is called before the first frame update
     private void Start()
@@ -27,31 +34,33 @@ public class GameController : MonoBehaviour
     {
         if (playerNumber == 1)
         {
-            scorePlayer1++;
-            Debug.Log("Player 1 Scored!");
+            player1Score++;
+            player1Text.GetComponent<TextMeshProUGUI>().text = player1Score.ToString();
+            if(debug) Debug.Log("Player 1 Scored!");
         }
         else if (playerNumber == 2)
         {
-            scorePlayer2++;
-            Debug.Log("Player 2 Scored!");
+            player2Score++;
+            player2Text.GetComponent<TextMeshProUGUI>().text = player2Score.ToString();
+            if (debug) Debug.Log("Player 2 Scored!");
         }
 
-        Debug.Log("Player 1: " + scorePlayer1 + " - Player 2: " + scorePlayer2);
+        if (debug) Debug.Log("Player 1: " + player1Score + " - Player 2: " + player2Score);
 
         // Check if a player has reached the winning score
-        if (scorePlayer1 >= 5 || scorePlayer2 >= 5)
+        if (player1Score >= 5 || player2Score >= 5)
         {
-            Debug.Log("Game Over!");
+            if (debug) Debug.Log("Game Over!");
 
             // Reset the scores
-            scorePlayer1 = 0;
-            scorePlayer2 = 0;
+            player1Score = 0;
+            player2Score = 0;
         }
 
         // Destroy the current ball
         Destroy(currentBall);
 
         // Spawn a new ball
-        SpawnBall();
+        Invoke(nameof(SpawnBall), 1);
     }
 }
