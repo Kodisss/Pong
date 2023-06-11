@@ -16,7 +16,7 @@ public class BallMovement : MonoBehaviour
     {
         game = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         rb = GetComponent<Rigidbody2D>();
-        StartMoving();
+        Invoke(nameof(StartMoving), 1);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
     [SerializeField] private GameObject ballPrefab;
+    [SerializeField] private GameObject explosionVFX;
 
     private GameObject currentBall;
 
@@ -51,16 +53,27 @@ public class GameController : MonoBehaviour
         if (player1Score >= 5 || player2Score >= 5)
         {
             if (debug) Debug.Log("Game Over!");
-
-            // Reset the scores
-            player1Score = 0;
-            player2Score = 0;
+            EndGame();
         }
 
         // Destroy the current ball
+        GameObject explosion = Instantiate(explosionVFX, currentBall.transform.position, currentBall.transform.rotation);
         Destroy(currentBall);
+        Destroy(explosion, 0.5f);
 
         // Spawn a new ball
-        Invoke(nameof(SpawnBall), 1);
+        SpawnBall();
+    }
+
+    private void EndGame()
+    {
+        if(player1Score < player2Score)
+        {
+            SceneManager.LoadScene("LoseScreen");
+        }
+        else
+        {
+            SceneManager.LoadScene("WinScreen");
+        }
     }
 }
