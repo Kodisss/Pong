@@ -39,7 +39,7 @@ public class BallMovement : MonoBehaviour
     private void StartMoving()
     {
         // Generate a random angle between -45 and 45 degre either towards the player or the opponent
-        float randomAngle = Random.Range(-45f, 45f);
+        float randomAngle = Random.Range(30f, 60f);
         Vector2 leftOrRight = Random.Range(0, 2) == 0 ? Vector2.right : Vector2.left;
 
         // Convert the angle to a direction vector

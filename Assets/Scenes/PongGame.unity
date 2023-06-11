@@ -1500,7 +1500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  smoothingSpeed: 50
+  smoothingSpeed: 10
 --- !u!1 &1346633492
 GameObject:
   m_ObjectHideFlags: 0
@@ -1845,6 +1845,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2266317233906151017, guid: 5c9d6d9d924dd614fb48e0565c49aa37, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3186657359217124103, guid: 5c9d6d9d924dd614fb48e0565c49aa37, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4817468269839016529, guid: 5c9d6d9d924dd614fb48e0565c49aa37, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7255208601837284794, guid: 5c9d6d9d924dd614fb48e0565c49aa37, type: 3}
       propertyPath: m_Name
       value: GameMap
@@ -1892,6 +1904,10 @@ PrefabInstance:
     - target: {fileID: 7618204666976820041, guid: 5c9d6d9d924dd614fb48e0565c49aa37, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8800918403601564121, guid: 5c9d6d9d924dd614fb48e0565c49aa37, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

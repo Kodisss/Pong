@@ -14,7 +14,7 @@ public class IA_Movement : MonoBehaviour
 
     [Header("Moving Variables")]
     [SerializeField] private float speed = 5f;
-    [SerializeField] private float smoothingSpeed = 50f;
+    [SerializeField] private float smoothingSpeed = 10f;
 
     // Start is called before the first frame update
     private void Start()
