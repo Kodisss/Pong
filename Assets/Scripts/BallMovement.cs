@@ -11,6 +11,7 @@ public class BallMovement : MonoBehaviour
 
     [Header("Moving Variables")]
     [SerializeField] private float speed = 5f;
+    [SerializeField] private float speedIncrement = 1.1f;
 
     private void Start()
     {
@@ -29,13 +30,22 @@ public class BallMovement : MonoBehaviour
         {
             game.Score(2);
         }
+        if (collision.gameObject.CompareTag("Paddle"))
+        {
+            rb.velocity *= speedIncrement;
+        }
     }
 
     private void StartMoving()
     {
-        // Generate a random direction for the ball to start moving
-        float x = Random.Range(0, 2) == 0 ? -1 : 1;
-        float y = Random.Range(0, 2) == 0 ? -1 : 1;
-        rb.velocity = new Vector2(speed * x, speed * y);
+        // Generate a random angle between -45 and 45 degre either towards the player or the opponent
+        float randomAngle = Random.Range(-45f, 45f);
+        Vector2 leftOrRight = Random.Range(0, 2) == 0 ? Vector2.right : Vector2.left;
+
+        // Convert the angle to a direction vector
+        Vector2 direction = Quaternion.Euler(0f, 0f, randomAngle) * leftOrRight;
+
+        // Apply the velocity to the object
+        rb.velocity = direction * speed;
     }
 }
