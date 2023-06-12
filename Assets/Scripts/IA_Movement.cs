@@ -14,7 +14,7 @@ public class IA_Movement : MonoBehaviour
 
     [Header("Moving Variables")]
     [SerializeField] private float speed = 5f;
-    [SerializeField] private float smoothingSpeed = 10f;
+    [SerializeField] private float smoothingSpeed = 5f;
 
     // Start is called before the first frame update
     private void Start()
@@ -29,7 +29,7 @@ public class IA_Movement : MonoBehaviour
         ball = GameObject.FindGameObjectWithTag("Ball");
         ballRb = ball.GetComponent<Rigidbody2D>();
 
-        // uses the right difficulty AI
+        // uses the right AI difficulty
         EasyAI();
     }
 

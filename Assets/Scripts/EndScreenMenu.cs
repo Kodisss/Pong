@@ -5,6 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class EndScreenMenu : MonoBehaviour
 {
+    [SerializeField] private GameObject endSound;
+
+    private void Start()
+    {
+        GameObject SFX = Instantiate(endSound);
+        Destroy(SFX,0.5f);
+    }
+
     public void RestartGame()
     {
         SceneManager.LoadScene("PongGame");

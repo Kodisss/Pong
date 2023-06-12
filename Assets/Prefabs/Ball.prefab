@@ -275,5 +275,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 921e7a37362c0d140995a892382edb53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bounceVFX: {fileID: 1245202137872002604, guid: 1bcd428d825059a42aa60ba1067a120e, type: 3}
+  bounceSFX: {fileID: 8220446875457326005, guid: f887d5d0d4f29e141a33b9a7cbba8663, type: 3}
+  explosionSFX: {fileID: 1703774295589559223, guid: 5da0917bd08738b4fa76c00905227ef7, type: 3}
   speed: 5
   speedIncrement: 1.1
