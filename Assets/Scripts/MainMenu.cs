@@ -10,6 +10,11 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("PongGame");
     }
 
+    public void Settings()
+    {
+        SceneManager.LoadScene("SettingsScreen");
+    }
+
     public void QuitGame()
     {
         Application.Quit();

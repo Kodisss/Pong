@@ -12,14 +12,17 @@ public class IA_Movement : MonoBehaviour
     private GameObject ball;
     private Rigidbody2D ballRb;
 
-    [Header("Moving Variables")]
-    [SerializeField] private float speed = 5f;
-    [SerializeField] private float smoothingSpeed = 5f;
+    private int difficulty;
+    private float speed;
+    private float smoothingSpeed;
+
+    [SerializeField] private bool debug = false;
 
     // Start is called before the first frame update
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        InitializeAIDifficulty();
     }
 
     // Update is called once per frame
@@ -29,24 +32,56 @@ public class IA_Movement : MonoBehaviour
         ball = GameObject.FindGameObjectWithTag("Ball");
         ballRb = ball.GetComponent<Rigidbody2D>();
 
-        // uses the right AI difficulty
-        EasyAI();
+        AIGestion();
     }
 
-    private void EasyAI()
+    private void InitializeAIDifficulty()
     {
-        // this checks if the ball is moving and especially towards the paddle, if not it stops
-        if (ballRb.velocity.magnitude != 0 && ballRb.velocity.x > 0)
+        difficulty = PlayerPrefs.GetInt("Difficulty");
+
+        if (debug) Debug.Log(difficulty);
+
+        if (difficulty == 0)
         {
-            EasyAIMove();
+            speed = 5f;
+            smoothingSpeed = 5f;
+        }else if (difficulty == 1)
+        {
+            speed = 7f;
+            smoothingSpeed = 12f;
+        }else if (difficulty == 2)
+        {
+            smoothingSpeed = 10f;
+            speed = 10f;
         }
+    }
+
+    private void AIGestion()
+    {
+        // this checks if the ball is moving
+        if (ballRb.velocity.magnitude != 0)
+        {
+            if (difficulty == 2) // if the game is setup to hard difficulty move
+            {
+                AIMove();
+            }
+            else if (ballRb.velocity.x > 0) // if not, move only when the ball comes towards you
+            {
+                AIMove();
+            }
+            else
+            {
+                rb.velocity = Vector2.Lerp(rb.velocity, Vector2.zero, smoothingSpeed * Time.deltaTime);
+            }
+        }
+        // else just stop moving
         else
         {
             rb.velocity = Vector2.Lerp(rb.velocity, Vector2.zero, smoothingSpeed * Time.deltaTime);
         }
     }
 
-    private void EasyAIMove()
+    private void AIMove()
     {
         // if the ball is higher than the paddle make the paddle move smoothly towards the balls height
         if (ball.transform.position.y > this.transform.position.y)
