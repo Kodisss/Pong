@@ -1956,7 +1956,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1827290128327499105, guid: 5c9d6d9d924dd614fb48e0565c49aa37, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7255208601837284794, guid: 5c9d6d9d924dd614fb48e0565c49aa37, type: 3}
       propertyPath: m_Name

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3344923527357611072}
   - component: {fileID: 2789006881472974921}
   - component: {fileID: 3186657359217124103}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Right Wall
   m_TagString: DeathRight
   m_Icon: {fileID: 0}
@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 4317573349995301768}
   - component: {fileID: 4407139246715637181}
   - component: {fileID: 2266317233906151017}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Upper Wall
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -412,7 +412,7 @@ GameObject:
   - component: {fileID: 385073148753326806}
   - component: {fileID: 1915777721643419427}
   - component: {fileID: 4817468269839016529}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Bottom Wall
   m_TagString: Wall
   m_Icon: {fileID: 0}
