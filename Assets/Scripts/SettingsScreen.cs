@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Windows;
 using TMPro;
 
 public class SettingsScreen : MonoBehaviour
@@ -12,6 +11,11 @@ public class SettingsScreen : MonoBehaviour
     private void Start()
     {
         dropdownMenu.value = PlayerPrefs.GetInt("Difficulty");
+    }
+
+    private void Update()
+    {
+        ManageInputs();
     }
 
     public void SetDifficulty(int input)
@@ -24,5 +28,13 @@ public class SettingsScreen : MonoBehaviour
     public void LoadMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
+    }
+
+    private void ManageInputs()
+    {
+        if (Input.GetButtonDown("Cancel"))
+        {
+            LoadMainMenu();
+        }
     }
 }
